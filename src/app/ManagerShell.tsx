@@ -1,8 +1,9 @@
-import { ChevronRight, Coffee, CupSoda, Flame, ReceiptText, ShoppingBag } from "lucide-react";
+import { ChevronRight, Coffee, CupSoda, Flame, History, ReceiptText, ShoppingBag } from "lucide-react";
 import { NavLink, Outlet } from "react-router";
 
 const links = [
   { to: "/dashboard", label: "Order Queue", icon: ReceiptText, end: true },
+  { to: "/orders", label: "All Orders", icon: History },
   { to: "/menu", label: "Menu Management", icon: ShoppingBag },
   { to: "/operations", label: "Store Operations", icon: Flame },
   { to: "/pos", label: "Manual POS", icon: CupSoda },
