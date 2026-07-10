@@ -2,7 +2,7 @@ import { ChevronRight, Coffee, CupSoda, Flame, ReceiptText, ShoppingBag } from "
 import { NavLink, Outlet } from "react-router";
 
 const links = [
-  { to: "/", label: "Order Queue", icon: ReceiptText, end: true },
+  { to: "/dashboard", label: "Order Queue", icon: ReceiptText, end: true },
   { to: "/menu", label: "Menu Management", icon: ShoppingBag },
   { to: "/operations", label: "Store Operations", icon: Flame },
   { to: "/pos", label: "Manual POS", icon: CupSoda },
@@ -14,7 +14,7 @@ export function ManagerShell() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_30%_-5%,rgba(220,150,60,0.10),transparent_30%)]" />
       <div className="relative grid min-h-screen lg:grid-cols-[272px_minmax(0,1fr)]">
         <aside className="flex min-h-full flex-col border-r border-white/[0.09] bg-[#101010]/95 px-5 py-6">
-          <NavLink to="/" className="flex items-center gap-3 px-2">
+          <NavLink to="/dashboard" className="flex items-center gap-3 px-2">
             <span className="grid size-11 place-items-center rounded-2xl border border-[#e8a949]/35 bg-[#2e2115] text-[#f3b657]">
               <Coffee size={21} />
             </span>
