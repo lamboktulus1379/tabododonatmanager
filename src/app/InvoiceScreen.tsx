@@ -1,0 +1,38 @@
+import { ArrowLeft, Check, ChefHat, CheckCircle2, Clock3, Download, MessageCircle, Printer, Truck, X } from "lucide-react";
+import { useNavigate } from "react-router";
+
+const lineItems = [
+  { qty: 2, item: "Glazed", unit: 3.9, total: 7.8 },
+  { qty: 1, item: "Matcha", unit: 4.8, total: 4.8 },
+  { qty: 1, item: "Delivery Fee", unit: 2.8, total: 2.8 },
+];
+
+const price = (amount: number) => `$${amount.toFixed(2)}`;
+
+export function InvoiceScreen() {
+  const navigate = useNavigate();
+  return <main className="min-h-screen bg-[#121212] font-sans text-stone-100">
+    <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_40%_-20%,rgba(216,150,63,0.10),transparent_32%),radial-gradient(circle_at_100%_100%,rgba(82,165,125,0.07),transparent_33%)]" />
+    <div className="relative mx-auto max-w-[1440px] px-5 py-6 sm:px-8 lg:px-10">
+      <button onClick={() => navigate("/")} className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#1a1a1a] px-3.5 py-2.5 text-sm text-stone-300 transition hover:border-[#e5ad57]/45 hover:text-[#f3bd67]"><ArrowLeft size={17} />Back to POS</button>
+      <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(280px,2fr)] lg:items-start">
+        <article className="overflow-hidden rounded-xl border border-white/[0.10] bg-[#1a1a1a] shadow-2xl shadow-black/35">
+          <header className="flex flex-col gap-6 border-b border-white/[0.09] p-6 sm:flex-row sm:items-start sm:justify-between sm:p-8">
+            <div className="flex items-center gap-3"><div className="grid size-12 place-items-center rounded-2xl border border-[#e8a949]/35 bg-[#332617] text-[#f2b75c]"><ChefHat size={23} /></div><div><h1 className="text-xl font-semibold tracking-[-0.025em]">Night Oven</h1><p className="mt-1 text-xs leading-5 text-stone-500">Jl. Kemang Raya No. 10, Jakarta<br />Open daily · 07:00–22:00</p></div></div>
+            <div className="sm:text-right"><p className="font-mono text-[11px] tracking-[0.12em] text-stone-500">ORDER ID</p><p className="mt-1 font-mono text-lg text-stone-100">#D-4190</p><p className="mt-1 text-xs text-stone-500">10 Jul 2026 · 18:42</p><span className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-[#8dd2ae]/30 bg-[#8dd2ae]/10 px-2.5 py-1.5 text-xs font-medium text-[#9ee0ba]"><Check size={13} strokeWidth={2.5} />Order Confirmed</span></div>
+          </header>
+          <div className="p-6 sm:p-8">
+            <section className="rounded-xl border border-white/[0.08] bg-[#161616] p-4"><p className="font-mono text-[10px] tracking-[0.14em] text-[#e9ad55]">BILLED TO</p><div className="mt-2 grid gap-1 text-sm text-stone-300"><strong className="font-medium text-stone-100">Ari Lestari</strong><span>+62 812 3456 7890</span><span className="text-stone-500">Jl. Taman Sari 14, Kebayoran Baru, Jakarta</span></div></section>
+            <section className="mt-7"><div className="grid grid-cols-[44px_1fr_86px_80px] gap-2 border-b border-white/[0.09] pb-3 font-mono text-[10px] tracking-[0.1em] text-stone-500"><span>QTY</span><span>ITEM NAME</span><span className="text-right">UNIT PRICE</span><span className="text-right">TOTAL</span></div><div className="divide-y divide-white/[0.07]">{lineItems.map((item) => <div key={item.item} className="grid grid-cols-[44px_1fr_86px_80px] gap-2 py-4 text-sm"><span className="font-mono text-stone-400">{item.qty}×</span><span className={item.item === "Delivery Fee" ? "text-stone-400" : "text-stone-100"}>{item.item}</span><span className="text-right font-mono text-stone-400">{price(item.unit)}</span><span className="text-right font-mono text-stone-100">{price(item.total)}</span></div>)}</div></section>
+            <section className="ml-auto mt-5 max-w-xs border-t border-white/[0.09] pt-4 text-sm"><div className="flex justify-between py-1.5 text-stone-500"><span>Subtotal</span><span className="font-mono text-stone-300">$12.60</span></div><div className="flex justify-between py-1.5 text-stone-500"><span>Tax</span><span className="font-mono text-stone-300">$0.80</span></div><div className="mt-2 flex justify-between border-t border-white/[0.09] pt-4 text-base font-semibold text-stone-100"><span>Grand Total</span><span className="font-mono text-xl tracking-[-0.04em]">$16.20</span></div></section>
+            <section className="mt-7 grid gap-3 sm:grid-cols-2"><div className="rounded-xl border border-[#e5ad57]/25 bg-[#2e2418] p-4"><p className="text-xs text-[#d9aa62]">Deposit Paid (DP)</p><p className="mt-1 font-mono text-lg font-semibold text-[#f2c178]">$10.00</p></div><div className="rounded-xl border border-[#8dd2ae]/25 bg-[#18261e] p-4"><p className="text-xs text-[#9acdad]">Balance Due</p><p className="mt-1 font-mono text-lg font-semibold text-[#a7dfbd]">$6.20</p></div></section>
+            <section className="mt-7 rounded-xl border border-white/[0.08] bg-[#242424] p-4 text-sm leading-6 text-stone-400"><strong className="block text-xs font-medium text-stone-200">Payment instructions</strong><p className="mt-1">Bank BCA: <span className="font-mono text-stone-300">123456789</span> a.n Night Oven. Please include order <span className="font-mono text-stone-300">#D-4190</span> with your transfer.</p></section>
+          </div>
+        </article>
+        <aside className="rounded-xl border border-white/[0.10] bg-[#1a1a1a] p-5 shadow-xl shadow-black/25 sm:p-6"><p className="font-mono text-[10px] tracking-[0.14em] text-[#e9ad55]">ORDER PROGRESS</p><h2 className="mt-1 text-xl font-semibold tracking-[-0.02em]">Order status</h2><div className="mt-7 space-y-0">{[{ icon: CheckCircle2, title: "Pending", detail: "Order confirmed", done: true }, { icon: ChefHat, title: "Baking", detail: "Queued for the kitchen", done: false }, { icon: Clock3, title: "Ready", detail: "Awaiting handoff", done: false }, { icon: Truck, title: "Delivered", detail: "Delivery complete", done: false }].map(({icon: Icon, title, detail, done}, index) => <div key={title} className="relative flex gap-3 pb-6 last:pb-0">{index < 3 && <span className="absolute left-[13px] top-7 h-[calc(100%-12px)] w-px bg-white/10" />}<span className={`z-10 grid size-7 shrink-0 place-items-center rounded-full border ${done ? "border-[#8dd2ae]/40 bg-[#8dd2ae] text-[#10251c]" : "border-white/10 bg-[#242424] text-stone-500"}`}><Icon size={14} /></span><div><p className={`text-sm font-medium ${done ? "text-stone-100" : "text-stone-400"}`}>{title}</p><p className="mt-0.5 text-xs text-stone-600">{detail}</p></div></div>)}</div>
+          <div className="mt-8 border-t border-white/[0.09] pt-5"><p className="font-mono text-[10px] tracking-[0.14em] text-stone-500">ACTIONS</p><div className="mt-3 space-y-2.5"><button className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#8dd2ae] text-sm font-semibold text-[#10251c] transition hover:bg-[#a4e1bc]"><MessageCircle size={18} />Share via WhatsApp</button><button className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 text-sm text-stone-300 transition hover:border-[#e5ad57]/45 hover:text-[#f2bd67]"><Download size={17} />Download Invoice PDF</button><button className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 text-sm text-stone-300 transition hover:border-[#e5ad57]/45 hover:text-[#f2bd67]"><Printer size={17} />Print Kitchen Ticket</button><button className="mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#ac625f]/35 bg-[#512d2e]/30 text-sm text-[#d7948f] transition hover:bg-[#632f31]"><X size={17} />Cancel Order</button></div></div>
+        </aside>
+      </div>
+    </div>
+  </main>;
+}
