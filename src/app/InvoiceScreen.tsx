@@ -14,7 +14,7 @@ export function InvoiceScreen() {
   return <main className="min-h-screen bg-[#121212] font-sans text-stone-100">
     <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_40%_-20%,rgba(216,150,63,0.10),transparent_32%),radial-gradient(circle_at_100%_100%,rgba(82,165,125,0.07),transparent_33%)]" />
     <div className="relative mx-auto max-w-[1440px] px-5 py-6 sm:px-8 lg:px-10">
-      <button onClick={() => navigate("/")} className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#1a1a1a] px-3.5 py-2.5 text-sm text-stone-300 transition hover:border-[#e5ad57]/45 hover:text-[#f3bd67]"><ArrowLeft size={17} />Back to POS</button>
+      <button onClick={() => navigate("/pos")} className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#1a1a1a] px-3.5 py-2.5 text-sm text-stone-300 transition hover:border-[#e5ad57]/45 hover:text-[#f3bd67]"><ArrowLeft size={17} />Back to POS</button>
       <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(280px,2fr)] lg:items-start">
         <article className="overflow-hidden rounded-xl border border-white/[0.10] bg-[#1a1a1a] shadow-2xl shadow-black/35">
           <header className="flex flex-col gap-6 border-b border-white/[0.09] p-6 sm:flex-row sm:items-start sm:justify-between sm:p-8">

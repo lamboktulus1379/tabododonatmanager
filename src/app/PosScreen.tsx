@@ -65,7 +65,6 @@ function DonutArt({ product, large = false }: { product: Product; large?: boolea
 
 export function PosScreen() {
   const navigate = useNavigate();
-  const [activeNav, setActiveNav] = useState("Manual POS");
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [fulfillment, setFulfillment] = useState<"Walk-in" | "Pickup" | "Delivery">("Walk-in");
@@ -100,27 +99,7 @@ export function PosScreen() {
   return (
     <main className="min-h-screen overflow-hidden bg-background font-sans text-foreground selection:bg-[#e9ad55]/30">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_48%_-10%,rgba(214,143,59,0.10),transparent_28%),radial-gradient(circle_at_100%_100%,rgba(61,147,113,0.07),transparent_34%)]" />
-      <div className="relative grid min-h-screen lg:grid-cols-[250px_minmax(0,1fr)_390px] xl:grid-cols-[272px_minmax(0,1fr)_420px]">
-        <aside className="flex min-h-full flex-col border-r border-border bg-[#101010]/95 px-5 py-6">
-          <a href="#manual-pos" className="flex items-center gap-3 px-2 focus:outline-none" aria-label="Night Oven home">
-            <span className="flex size-11 items-center justify-center rounded-2xl border border-[#e8a949]/35 bg-[#2e2115] text-[#f3b657]"><Coffee size={21} strokeWidth={2.2} /></span>
-            <span><strong className="block text-[18px] font-semibold tracking-[-0.02em] text-stone-100">Night Oven</strong><small className="font-mono text-[10px] font-medium tracking-[0.16em] text-stone-500">MANAGER CONSOLE</small></span>
-          </a>
-          <nav className="mt-12 space-y-1.5" aria-label="Manager console">
-            {["Order Queue", "Menu Management", "Store Operations", "Manual POS"].map((link, index) => {
-              const icons = [ReceiptText, ShoppingBag, Flame, CupSoda];
-              const Icon = icons[index];
-              const active = activeNav === link;
-              return <button key={link} onClick={() => setActiveNav(link)} className={`group flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-left text-sm transition ${active ? "border border-[#e0a74e]/30 bg-[#2e2418] text-[#f5c77d] shadow-[0_10px_30px_rgba(0,0,0,0.18)]" : "border border-transparent text-stone-400 hover:bg-white/[0.035] hover:text-stone-200"}`}><Icon size={18} strokeWidth={1.8} /><span className="flex-1">{link}</span>{active && <ChevronRight size={15} />}</button>;
-            })}
-          </nav>
-          <div className="mt-auto rounded-2xl border border-[#a55c22]/30 bg-[linear-gradient(145deg,rgba(95,49,23,0.52),rgba(39,27,18,0.92))] p-4 shadow-xl shadow-black/20">
-            <div className="flex items-center justify-between"><span className="flex items-center gap-2 text-xs font-medium text-[#f2bd73]"><Flame size={14} fill="currentColor" />Rush forecast</span><span className="rounded-full bg-[#eeb260]/15 px-2 py-0.5 font-mono text-[10px] text-[#f2bd73]">6–8 PM</span></div>
-            <p className="mt-3 text-sm leading-5 text-stone-300">Evening lift expected.<br /><span className="text-stone-500">Prep an extra 18 classics.</span></p>
-            <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-black/35"><div className="h-full w-[74%] rounded-full bg-[#e8a949]" /></div>
-          </div>
-          <p className="mt-5 px-2 font-mono text-[10px] tracking-[0.12em] text-stone-600">STORE #04 · OPEN</p>
-        </aside>
+      <div className="relative grid min-h-screen lg:grid-cols-[minmax(0,1fr)_390px] xl:grid-cols-[minmax(0,1fr)_420px]">
 
         <section id="manual-pos" className="min-w-0 px-6 py-6 lg:px-8 xl:px-10">
           <header className="flex flex-col gap-5 border-b border-border pb-6 xl:flex-row xl:items-end xl:justify-between">
